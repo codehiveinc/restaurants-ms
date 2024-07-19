@@ -1,6 +1,7 @@
 package com.codehive.restaurantsservice.restaurants.infrastructure.adapters.inputs.rest.dtos.requests;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,10 +14,9 @@ public class UpdateMealRequest {
     @NotBlank(message = "Description is require")
     private String description;
 
-    @NotBlank(message = "Price is require")
+    @NotNull(message = "Price is require")
     private Float price;
-    @NotBlank(message = "Status is require")
-    private String status;
-    @NotBlank
+
+    @NotBlank(message = "Image URL is require")
     private String imageUrl;
 }

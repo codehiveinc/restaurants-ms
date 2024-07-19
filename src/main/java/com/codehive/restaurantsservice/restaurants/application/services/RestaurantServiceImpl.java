@@ -4,6 +4,7 @@ import com.codehive.restaurantsservice.restaurants.application.ports.inputs.IRes
 import com.codehive.restaurantsservice.restaurants.application.ports.outputs.IRestaurantPersistencePort;
 import com.codehive.restaurantsservice.restaurants.domain.models.RestaurantModel;
 import com.codehive.restaurantsservice.restaurants.infrastructure.adapters.inputs.rest.dtos.requests.CreateMealRequest;
+import com.codehive.restaurantsservice.restaurants.infrastructure.adapters.inputs.rest.dtos.requests.CreateRestaurantRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,13 @@ public class RestaurantServiceImpl implements IRestaurantServicePort {
         this.persistencePort = persistencePort;
     }
     @Override
-    public RestaurantModel create(RestaurantModel restaurantModel) {
+    public RestaurantModel create(CreateRestaurantRequest request) {
+        RestaurantModel restaurantModel = new RestaurantModel();
+        UUID uuid = UUID.randomUUID();
+        restaurantModel.setUuid(uuid);
+        restaurantModel.setName(request.getName());
+        restaurantModel.setEmail(request.getEmail());
+        restaurantModel.setLocation(request.getLocation());
         return persistencePort.create(restaurantModel);
     }
 
@@ -36,6 +43,7 @@ public class RestaurantServiceImpl implements IRestaurantServicePort {
     public void delete(UUID uuid) {
 
         persistencePort.delete(uuid);
-
     }
+
+
 }

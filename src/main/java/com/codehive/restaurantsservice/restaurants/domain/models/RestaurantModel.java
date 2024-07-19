@@ -9,11 +9,14 @@ import java.util.UUID;
 @Setter
 public class RestaurantModel {
 
-    private UUID uuid;
-
     private Long id;
+
+    private UUID uuid;
 
     private String name;
 
     private String location;
+
+    private String email;
+
 }

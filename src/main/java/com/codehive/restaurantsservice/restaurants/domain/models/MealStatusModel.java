@@ -9,9 +9,9 @@ import java.util.UUID;
 @Setter
 public class MealStatusModel {
 
-    private UUID uuid;
-
     private Long id;
+
+    private UUID uuid;
 
     private String name;
 }

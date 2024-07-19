@@ -13,11 +13,11 @@ import java.util.UUID;
 @Getter
 @Setter
 public class MealStatusEntity {
-
-    private UUID uuid;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private UUID uuid;
 
     private String name;
 

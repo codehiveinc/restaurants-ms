@@ -16,5 +16,5 @@ public interface IMealStatusRepository extends JpaRepository<MealStatusEntity, U
     boolean existsByUUID(UUID uuid);
 
     @Query(value = "SELECT * FROM meal_status WHERE uuid = ?1", nativeQuery = true)
-    Optional<ScheduleEntity> findByUUID(UUID uuid);
+    Optional<MealStatusEntity> findByUUID(UUID uuid);
 }

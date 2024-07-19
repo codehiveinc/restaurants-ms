@@ -19,6 +19,8 @@ public class ScheduleServiceImpl implements IScheduleServicePort {
 
     @Override
     public ScheduleModel create(ScheduleModel scheduleModel) {
+        UUID uuid = UUID.randomUUID();
+        scheduleModel.setUuid(uuid);
         return persistencePort.create(scheduleModel);
     }
 

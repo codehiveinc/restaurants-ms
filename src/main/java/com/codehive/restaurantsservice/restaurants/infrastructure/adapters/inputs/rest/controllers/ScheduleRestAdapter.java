@@ -34,6 +34,7 @@ public class ScheduleRestAdapter {
                 .message("List of schedules")
                 .success(true)
                 .httpStatus(HttpStatus.OK)
+                .code(HttpStatus.OK.value())
                 .build();
         return response.toResponseEntity();
     }
@@ -47,6 +48,7 @@ public class ScheduleRestAdapter {
                 .message("Schedule created")
                 .success(true)
                 .httpStatus(HttpStatus.CREATED)
+                .code(HttpStatus.CREATED.value())
                 .build();
 
         return response.toResponseEntity();
@@ -61,6 +63,7 @@ public class ScheduleRestAdapter {
                 .message("Schedule retrieved")
                 .success(true)
                 .httpStatus(HttpStatus.OK)
+                .code(HttpStatus.OK.value())
                 .build();
         return response.toResponseEntity();
     }
@@ -72,6 +75,7 @@ public class ScheduleRestAdapter {
                 .message("Schedule deleted")
                 .success(true)
                 .httpStatus(HttpStatus.NO_CONTENT)
+                .code(HttpStatus.NO_CONTENT.value())
                 .build();
         return response.toResponseEntity();
     }

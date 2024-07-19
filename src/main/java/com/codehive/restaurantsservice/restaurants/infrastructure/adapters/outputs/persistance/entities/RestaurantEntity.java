@@ -15,20 +15,17 @@ import java.util.UUID;
 @Setter
 public class RestaurantEntity {
 
-    private UUID uuid;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private UUID uuid;
 
     private String name;
 
     private String email;
 
     private String location;
-
-    private String openingTime;
-
-    private String closingTime;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     @JsonManagedReference

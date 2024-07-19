@@ -36,12 +36,14 @@ public class RestaurantRestAdapter  {
                 .message("List of restaurants")
                 .success(true)
                 .httpStatus(HttpStatus.OK)
+                .code(HttpStatus.OK.value())
                 .build();
         return response.toResponseEntity();
     }
 
     @PostMapping
     public ResponseEntity<BaseResponse> create(@Valid @RequestBody CreateRestaurantRequest request){
+
         RestaurantModel restaurant = servicePort.create(modelMapper.toRestaurantModel(request));
 
         BaseResponse response = BaseResponse.builder()
@@ -49,6 +51,7 @@ public class RestaurantRestAdapter  {
                 .message("Restaurant created")
                 .success(true)
                 .httpStatus(HttpStatus.CREATED)
+                .code(HttpStatus.CREATED.value())
                 .build();
 
         return response.toResponseEntity();
@@ -63,6 +66,7 @@ public class RestaurantRestAdapter  {
                 .message("Restaurant retrieved")
                 .success(true)
                 .httpStatus(HttpStatus.OK)
+                .code(HttpStatus.OK.value())
                 .build();
 
         return response.toResponseEntity();
@@ -77,6 +81,7 @@ public class RestaurantRestAdapter  {
                 .message("Restaurant deleted")
                 .success(true)
                 .httpStatus(HttpStatus.NO_CONTENT)
+                .code(HttpStatus.NO_CONTENT.value())
                 .build();
 
         return response.toResponseEntity();

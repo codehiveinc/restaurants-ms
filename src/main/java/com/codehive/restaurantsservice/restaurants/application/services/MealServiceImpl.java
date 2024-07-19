@@ -20,6 +20,8 @@ public class MealServiceImpl implements IMealServicePort {
 
     @Override
     public MealModel create(MealModel mealModel) {
+        UUID uuid = UUID.randomUUID();
+        mealModel.setUuid(uuid);
         return persistencePort.create(mealModel);
     }
 
@@ -42,5 +44,9 @@ public class MealServiceImpl implements IMealServicePort {
     public void delete(UUID uuid) {
         persistencePort.delete(uuid);
 
+    }
+
+    public UUID generateUUIDForMeal() {
+        return UUID.randomUUID();
     }
 }

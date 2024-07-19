@@ -26,8 +26,6 @@ public class MealEntity {
 
     private float price;
 
-    private String status;
-
     private String imageUrl;
 
     @ManyToOne
