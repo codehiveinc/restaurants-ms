@@ -22,6 +22,7 @@ public class MealRestAdapter {
 
     private final IMealModelMapper modelMapper;
 
+
     public MealRestAdapter(IMealServicePort servicePort, IMealModelMapper modelMapper) {
         this.servicePort = servicePort;
         this.modelMapper = modelMapper;
@@ -43,6 +44,7 @@ public class MealRestAdapter {
 
     @GetMapping("{uuid}")
     public ResponseEntity<BaseResponse> get(@PathVariable UUID uuid){
+        //String userUUID = (String) request.getAttribute("authUserUUID");
         MealModel meal = servicePort.get(uuid);
 
         BaseResponse response = BaseResponse.builder()

@@ -10,6 +10,8 @@ import lombok.Setter;
 @Setter
 public class CreateMealRequest {
 
+    private String user_uuid;
+
     @NotBlank(message = "Name is require")
     private String name;
 

@@ -8,6 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UpdateMealRequest {
+
+    private String user_uuid;
+
     @NotBlank(message = "Name is require")
     private String name;
 

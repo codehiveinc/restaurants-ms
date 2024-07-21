@@ -9,6 +9,8 @@ import lombok.Setter;
 @Setter
 public class CreateRestaurantRequest {
 
+    private String user_uuid;
+
     @NotBlank(message = "Name is require")
     private String name;
     @NotBlank(message = "Email is require")
