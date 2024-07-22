@@ -5,6 +5,7 @@ import com.codehive.restaurantsservice.restaurants.infrastructure.adapters.outpu
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,9 @@ public interface IRestaurantRepository extends JpaRepository<RestaurantEntity, U
 
     @Query(value = "SELECT * FROM restaurants WHERE uuid = ?1", nativeQuery = true)
     Optional<RestaurantEntity> findByUUID(UUID uuid);
+
+    @Query("SELECT r FROM RestaurantEntity r JOIN r.meals m WHERE m.id = :mealId")
+    Optional<RestaurantEntity> findRestaurantByMealId(@Param("mealId") UUID mealId);
 
     @Modifying
     @Transactional

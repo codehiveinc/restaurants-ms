@@ -56,4 +56,11 @@ public class RestaurantPersistenceAdapter implements IRestaurantPersistencePort 
         restaurantRepository.deleteByUUID(uuid);
 
     }
+
+    @Override
+    public RestaurantModel findRestaurantByMealId(UUID mealId) {
+        return restaurantRepository.findRestaurantByMealId(mealId)
+                .map(modelMapper::toRestaurantModel)
+                .orElseThrow(() -> new EntityNotFoundException("Restaurant not found for Meal ID: " + mealId));
+    }
 }

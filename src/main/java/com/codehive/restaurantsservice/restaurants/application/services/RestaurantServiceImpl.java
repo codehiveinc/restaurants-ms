@@ -45,5 +45,10 @@ public class RestaurantServiceImpl implements IRestaurantServicePort {
         persistencePort.delete(uuid);
     }
 
+    public RestaurantModel getRestaurantByMealId(UUID mealId) {
+        // Assuming the persistence port provides a method to find a restaurant by meal ID
+        return persistencePort.findRestaurantByMealId(mealId);
+    }
+
 
 }

@@ -14,4 +14,6 @@ public interface IRestaurantPersistencePort {
     RestaurantModel get(UUID uuid);
 
     void delete(UUID uuid);
+
+    RestaurantModel findRestaurantByMealId(UUID mealId);
 }
