@@ -10,7 +10,6 @@ public class CreateScheduleRequest {
 
     private String user_uuid;
 
-
     @NotBlank
     private String openingTime;
 
