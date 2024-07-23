@@ -3,7 +3,7 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline
 COPY src ./src
-RUN mvn clean install -X
+
 ARG SERVER_PORT=9090
 EXPOSE ${SERVER_PORT}
 CMD ["java", "-jar", "target/RestaurantsService-0.0.1-SNAPSHOT.jar", "--server.port=${SERVER_PORT}"]
