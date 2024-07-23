@@ -1,9 +1,16 @@
-FROM maven:3.8.1-openjdk-17
+FROM amazoncorretto:17-alpine3.19
+
 WORKDIR /app
+
+# install dependencies with pom and then create final fat jar
+RUN apk add --no-cache maven
 COPY pom.xml .
 RUN mvn dependency:go-offline
-COPY src ./src
+COPY src src
+RUN mvn package -DskipTests=true
 
-ARG SERVER_PORT=9090
-EXPOSE ${SERVER_PORT}
-CMD ["java", "-jar", "target/RestaurantsService-0.0.1-SNAPSHOT.jar", "--server.port=${SERVER_PORT}"]
+# copy the final jar to the image
+RUN cp target/*.jar app.jar
+
+# run the jar
+CMD ["java", "-jar", "app.jar"]
