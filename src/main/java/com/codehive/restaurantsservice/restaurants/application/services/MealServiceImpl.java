@@ -46,6 +46,11 @@ public class MealServiceImpl implements IMealServicePort {
 
     }
 
+    @Override
+    public MealModel getMealByKeyword(String name) {
+        return persistencePort.getMealByKeyword(name);
+    }
+
     public UUID generateUUIDForMeal() {
         return UUID.randomUUID();
     }

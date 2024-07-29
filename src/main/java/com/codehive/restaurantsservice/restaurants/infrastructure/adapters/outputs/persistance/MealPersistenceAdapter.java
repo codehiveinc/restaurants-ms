@@ -67,4 +67,10 @@ public class MealPersistenceAdapter implements IMealPersistencePort {
         repository.deleteByUUID(uuid);
 
     }
+    @Override
+    public MealModel getMealByKeyword(String name) {
+        return repository.findByName(name)
+                .map(mapper::toMealModel)
+                .orElseThrow(() -> new RuntimeException("Meal not found"));
+    }
 }

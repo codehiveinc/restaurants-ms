@@ -46,8 +46,12 @@ public class RestaurantServiceImpl implements IRestaurantServicePort {
     }
 
     public RestaurantModel getRestaurantByMealId(UUID mealId) {
-        // Assuming the persistence port provides a method to find a restaurant by meal ID
         return persistencePort.findRestaurantByMealId(mealId);
+    }
+
+    @Override
+    public List<RestaurantModel> getRestaurantsByUserUUID(UUID userUUID) {
+        return persistencePort.getRestaurantsByUserUUID(userUUID);
     }
 
 

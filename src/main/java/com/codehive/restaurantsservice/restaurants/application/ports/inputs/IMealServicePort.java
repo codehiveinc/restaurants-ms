@@ -16,4 +16,6 @@ public interface IMealServicePort {
     MealModel update(UUID uuid, MealModel mealModel);
 
     void delete(UUID uuid);
+
+    MealModel getMealByKeyword(String name);
 }

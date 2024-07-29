@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,6 +25,9 @@ public interface IRestaurantRepository extends JpaRepository<RestaurantEntity, U
 
     @Query("SELECT r FROM RestaurantEntity r JOIN r.meals m WHERE m.id = :mealId")
     Optional<RestaurantEntity> findRestaurantByMealId(@Param("mealId") UUID mealId);
+
+    List<RestaurantEntity> findByUserUUID(UUID userUUID);
+
 
     @Modifying
     @Transactional

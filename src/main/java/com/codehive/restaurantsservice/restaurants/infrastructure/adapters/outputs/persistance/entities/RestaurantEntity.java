@@ -27,6 +27,8 @@ public class RestaurantEntity {
 
     private String location;
 
+    private UUID userUUID;
+
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<MealEntity> meals;

@@ -21,6 +21,9 @@ public interface IMealRepository extends JpaRepository<MealEntity, UUID>{
     @Query(value = "SELECT * FROM meals WHERE uuid = ?1", nativeQuery = true)
     Optional<MealEntity> findByUUID(UUID uuid);
 
+    @Query("SELECT m FROM MealEntity m WHERE m.name = ?1")
+    Optional<MealEntity> findByName(String name);
+
     @Modifying
     @Transactional
     @Query("DELETE FROM MealEntity m WHERE m.uuid = ?1")

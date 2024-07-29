@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class RestaurantPersistenceAdapter implements IRestaurantPersistencePort {
@@ -62,5 +63,13 @@ public class RestaurantPersistenceAdapter implements IRestaurantPersistencePort 
         return restaurantRepository.findRestaurantByMealId(mealId)
                 .map(modelMapper::toRestaurantModel)
                 .orElseThrow(() -> new EntityNotFoundException("Restaurant not found for Meal ID: " + mealId));
+    }
+
+    @Override
+    public List<RestaurantModel> getRestaurantsByUserUUID(UUID userUUID) {
+        List<RestaurantEntity> entities = restaurantRepository.findByUserUUID(userUUID);
+        return entities.stream()
+                .map(modelMapper::toRestaurantModel)
+                .collect(Collectors.toList());
     }
 }

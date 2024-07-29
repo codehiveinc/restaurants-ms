@@ -72,6 +72,19 @@ public class RestaurantRestAdapter  {
         return response.toResponseEntity();
     }
 
+    @GetMapping("/user/{userUUID}")
+    public ResponseEntity<BaseResponse> getRestaurantsByUserUUID(@PathVariable UUID userUUID) {
+        List<RestaurantModel> restaurants = servicePort.getRestaurantsByUserUUID(userUUID);
+        BaseResponse response = BaseResponse.builder()
+                .data(restaurants)
+                .message("List of restaurants for user")
+                .success(true)
+                .httpStatus(HttpStatus.OK)
+                .code(HttpStatus.OK.value())
+                .build();
+        return response.toResponseEntity();
+    }
+
     @DeleteMapping("{uuid}")
     public ResponseEntity<BaseResponse> delete(@PathVariable UUID uuid){
         servicePort.delete(uuid);

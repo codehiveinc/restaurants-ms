@@ -16,4 +16,6 @@ public interface IRestaurantServicePort {
     RestaurantModel get(UUID uuid);
 
     void delete(UUID uuid);
+
+    List<RestaurantModel> getRestaurantsByUserUUID(UUID userUUID);
 }

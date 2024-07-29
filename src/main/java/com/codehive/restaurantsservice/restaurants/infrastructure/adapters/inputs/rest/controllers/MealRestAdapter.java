@@ -103,5 +103,18 @@ public class MealRestAdapter {
 
         return response.toResponseEntity();
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<BaseResponse> getMealByKeyword(@RequestParam String name) {
+        MealModel meal = servicePort.getMealByKeyword(name);
+        BaseResponse response = BaseResponse.builder()
+                .data(meal)
+                .message("Meal found")
+                .success(true)
+                .httpStatus(HttpStatus.OK)
+                .code(HttpStatus.OK.value())
+                .build();
+        return response.toResponseEntity();
+    }
 }
 
